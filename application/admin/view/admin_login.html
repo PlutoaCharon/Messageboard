@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>留言板后台</title>
+<link rel="stylesheet" href="./public/css/admin.css" />
+</head>
+<body>
+<div id="box">
+	<h1>留言板后台</h1>
+	<div id="loginbox">
+		<form method="post" action="">
+			<p>用户名：<input name="username" type="text" class="input" /></p>
+			<p>密　码：<input name="password" type="password" class="input" /></p>
+			<p>验证码：<input name="captcha" type="text" class="input" /></p>
+			<p><img src="index.php?p=admin&c=admin&a=captcha" onclick="this.src='index.php?p=admin&c=admin&a=captcha&rand='+Math.random()" /></p>
+			</p><input type="submit" value="登录" class="button" /></p>
+		</form>
+		
+	</div>
+</div>
+</body>
+</html>

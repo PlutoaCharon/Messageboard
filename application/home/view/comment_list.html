@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>留言板</title>
+<link rel="stylesheet" href="./public/css/home.css" />
+</head>
+<body>
+<div id="box">
+	<h1>留言板</h1>
+	<div class="postbox">
+		<form method="post" action="index.php?p=home&c=comment&a=add">
+			<ul class="userbox">
+				<li>名称：</li><li class="user_name" ><input type="text" name="poster" /></li>
+				<li>邮箱：</li><li class="user_email" ><input type="text" name="mail" /></li>
+				<li class="user_post"><input type="submit" class="post_button" value="发布" /></li>
+			</ul>
+			<textarea name="comment" required="required" >在此处输入留言</textarea>
+		</form>
+	</div>
+	<div class="comment_info">
+		留言数：<?php echo $num; ?>
+		<span class="sort">
+			排序方式：<a href="index.php" <?php if(!isset($_GET['sort'])) echo 'class="curr"';?>>正序</a> <a href="index.php?sort=desc" <?php if(isset($_GET['sort']) && $_GET['sort']=='desc') echo 'class="curr"';?>>倒序</a>
+		</span>
+	</div>
+	<ul class="comments">
+		<?php foreach($data as $v): ?>
+		<li>
+			<p>用户名：<?php echo $v['poster']; ?></p>
+			<p><?php echo $v['comment']; ?></p>
+			<p>发表日期：<?php echo $v['date']; ?></p>
+			<?php if($v['reply']!==''): ?>
+			<ul class="comment_reply">
+				<li>
+					<p>管理员回复：</p>
+					<p><?php echo $v['reply']; ?></p>
+				</li>
+			</ul>
+			<?php endIf; ?>
+		</li>
+		<?php endForeach; ?>
+	</ul>
+	<div class="comments_footer">
+		<?php echo $pageList; ?>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>留言板后台</title>
+<link rel="stylesheet" href="./public/css/admin.css" />
+</head>
+<body>
+<div id="box">
+	<h1>留言板后台</h1>
+	<div id="info">欢迎您：admin <a href="index.php?p=admin&c=admin&a=logout">退出</a></div>
+	<div id="comment">
+		<?php foreach($data as $v): ?>
+		<ul class="list">
+			<li>作者：<?php echo $v['poster'] ?> 邮箱：<?php echo $v['mail']; ?> IP：<?php echo $v['ip']; ?>
+				<span class="right">
+				<a href="index.php?p=admin&c=comment&a=reply&id=<?php echo $v['id']; ?>">回复/修改</a>
+				<a href="index.php?p=admin&c=comment&a=delete&id=<?php echo $v['id']; ?>">删除</a>
+				</span>
+			</li>
+			<li><?php echo $v['comment']; ?></li>
+			<li>
+				<span class="right">发表时间：<?php echo $v['date']; ?></span>
+				管理员回复：<br /><?php echo $v['reply']; ?>
+			</li>
+		</ul>
+		<?php endForeach; ?>
+	</div>
+	<div id="footer">
+		<?php echo $pageList; ?>
+	</div>
+</div>
+</body>
+</html>
